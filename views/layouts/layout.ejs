@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Sails App</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/styles/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/styles/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/styles/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/styles/css/bootstrap.css">
+    <link rel="stylesheet" href="/styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/fontawesome-all.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/tempusdominus-bootstrap-4.min.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+      <div class="container">
+        <a href="/"><img src="/images/logo.png" style="width:400px;height:120px"></a>
+        <div class="navbar">
+          <ul class="nav navbar-nav flex-row ml-auto">
+            <a class="btn btn-secondary" href="/user/slotpage">cryptoSlots</a>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+          <ul class="navbar-nav ml-auto align-items-center">
+            <% if(session.authenticated) { %>
+            <li class="active list-inline-item"><a href="/user/show?id=<%= session.User.id %>"><%= session.User.name %> </a> </li>
+            <a class="btn btn-primary" href="/session/destroy">LOGOUT</a>
+            <% } %>
+          </ul>
+          <% if (!session.authenticated) { %>
+            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+              <li class="dropdown order-1">
+                <button type="button" id="dropdownMenu" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle active">LOGIN <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right mt-2" style="width: 300px">
+                  <li class="px-2 py-3">
+                    <form class="form-signin" role="form" id="formLogIn">
+                      <div class="form-group">
+                        <input id="emailInput" placeholder="Email" class="form-control form-control-sm" name="email" type="text" required="">
+                      </div>
+                      <div class="alert alert-danger collapse" role="alert" id="noLogEmail">
+                        <span>
+                        <p>Please insert your email!</p>
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" name="password" type="password" required="">
+                      </div>
+                      <div class="alert alert-danger collapse" role="alert" id="noLogPass">
+                        <span>
+                        <p>Please insert your password!</p>
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <input type="button" class="btn btn-primary btn-block" id="logIn" value="LOGIN"/>
+                      </div>
+                      <div class="alert alert-danger collapse" role="alert" id="invalidEmail">
+                        <span>
+                        <p>The email address not found.</p>
+                        </span>
+                      </div>
+                      <div class="alert alert-danger collapse" role="alert" id="invalidPass">
+                        <span>
+                        <p>Invalid username and password combination.</p>
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                      </div>
+                      <div class="form-group text-center">
+                        <small><a href="/user/signup" >New here?</a></small>
+                      </div>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+
+    <%- body %>
+
+    <div class="container text-white bg-dark">
+      <hr>
+      <footer class="footer">
+        <div class="nav justify-content-end">
+          <div>cryptoParking made by LDSE.</div>
+        </div>
+      </footer>
+    </div>
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like React, Vue.js, Angular, Ember, and Backbone
+        require that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different view engine (handlebars, dust, pug/jade, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+        Server-side View Locals
+        ========================
+
+        Sometimes, it's convenient to get access to your server-side view locals from
+        client-side JavaScript.  This can improve page load times, remove the need for
+        extra AJAX requests, and make your client-side code easier to understand and
+        to maintain.  Sails provides a simple mechanism for accessing dynamic view
+        locals: the "exposeLocalsToBrowser()" view partial.
+
+        For more information on using this built-in feature, see:
+        https://sailsjs.com/docs/concepts/views/locals#?escaping-untrusted-data-using-exposelocalstobrowser
+
+    -->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/dependencies/sails.io.js"></script>
+    <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/js/web3.min.js"></script>
+    <script src="/js/abi.js"></script>
+    <script src="/js/js/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/js/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/js/js/bootstrap/bootstrap.js"></script>
+    <script src="/js/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/js/moment.min.js"></script>
+    <script src="/js/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/signup.js"></script>
+    <!--SCRIPTS END-->
+    <%- blocks.localScripts %>
+  </body>
+</html>

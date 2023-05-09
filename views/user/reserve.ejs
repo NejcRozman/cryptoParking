@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card mx-auto text-white bg-primary mb-3" style="width: 600px; padding: 30px">
+        <h2>Make a reservation!</h2>
+        <h3 data-slotid="<%= slotid %>" id="idSlot">Slot id: <%= slotid %></h3>
+
+        <form class="form" id="form">
+
+          <div class="form-group">
+            <label class="control-label" for="from">From:</label>
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+              <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+              <div class="input-group-append" id="dt1" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="to">To:</label>
+            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+              <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+              <div class="input-group-append" id="dt2" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <div class="alert alert-danger collapse" role="alert" id="noMeta1">
+      <span>
+      <h2>You need to have installed MetaMask to create or reserve slots!</h2>
+        <p>You don't have it? <a class="active" href="https://metamask.io/">Get MetaMask!</a> </p>
+      </span>
+            </div>
+            <div class="alert alert-danger collapse" role="alert" id="noMetaLog">
+      <span>
+      <h2>You need to be logged in MetaMask to create or reserve slots!</h2>
+      </span>
+            </div>
+            <div class="alert alert-danger collapse" role="alert" id="dateInvalid">
+      <span>
+      <h2>Your date input is invalid!</h2>
+      </span>
+            </div>
+          </div>
+
+          <div class="alert alert-danger collapse" role="alert" id="resInvalid">
+      <span>
+      <h2>Your date is already reserved!</h2>
+      </span>
+          </div>
+          <div class="form-group">
+            <input type="button" class="btn btn-success btnSection" id="btnReserve" value="Reserve"/>
+          </div>
+          <div class="form-group">
+            <input type="button" class="btn btn-danger btnSection collapse" id="btnDrop" value="Drop"/>
+          </div>
+          <div class="form-group">
+            <input type="button" class="btn btn-warning btnSection collapse" id="btnLift" value="Lift"/>
+          </div>
+        </form>
+        <div id="txStatus" style="color:white;"></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2 class="text-white">Reservations on this slot:</h2>
+      <table class="table table-bordered table-danger">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">From</th>
+          <th scope="col">To</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% block('localScripts', '<script src="/js/reserve.js"></script>') %>
+

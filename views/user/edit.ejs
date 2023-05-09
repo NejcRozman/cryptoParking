@@ -1,0 +1,13 @@
+<div class="card mx-auto text-white bg-primary mb-3" style="width: 28rem; padding: 15px">
+  <form action="/user/update?id=<%= user.id %>" method="POST" class="form-signin" >
+    <h2>Editing a user!</h2>
+
+    <input value="<%= user.name%>" name="name" type="text" class="form-control"/>
+    <input value="<%= user.title%>" name="title" type="text" class="form-control"/>
+    <br>
+    <input type="submit" value="Proceed" class="btn btn-lg btn-success btn-block" id="btn"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  </form>
+</div>
+
+

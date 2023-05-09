@@ -1,0 +1,22 @@
+<div class="container" style="padding-top: 20px">
+  <div class="jumbotron d-flex align-items-center" style="height: 200px">
+    <div class="container">
+      <h1>Create your own cryptoSlot!</h1>
+      <h2>You need to be logged in to create a new cryptoSlot.</h2>
+      <% if(session.authenticated) { %>
+      <a href="/user/createslot?id=<%= session.User.id %>" class="btn btn-lg btn-success">Create new slot!</a>
+      <% } %>
+    </div>
+  </div>
+  <div class="alert alert-danger collapse" role="alert" id="noMeta">
+      <span>
+      <h2>You need to have installed MetaMask to create or reserve slots!</h2>
+        <p>You don't have it? <a class="active" href="https://metamask.io/">Get MetaMask!</a> </p>
+      </span>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-3" id="cardRow">
+  </div>
+</div>
+<% block('localScripts', '<script src="/js/slotpage.js"></script>') %>

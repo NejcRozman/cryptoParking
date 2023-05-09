@@ -1,0 +1,75 @@
+<div class="card mx-auto text-white bg-primary mb-3" style="width: 28rem; padding: 15px">
+  <form class="form" id="form">
+    <h2 class="text-center">Create an account</h2>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Name</label>
+      <input type="text" class="form-control" placeholder="your name" name="name" id="name" required>
+      <div class="alert alert-danger collapse" role="alert" id="noName">
+      <span>
+      <p>Please insert your name!</p>
+      </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="title">Title</label>
+      <input type="text" class="form-control" placeholder="your title" name="title" id="title">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="email">Email</label>
+      <input type="text" class="form-control" placeholder="email address" name="email" id="email" required>
+      <div class="alert alert-danger collapse" role="alert" id="noEmail">
+      <span>
+      <p>Please insert your email!</p>
+      </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="pass1">Password</label>
+      <input type="password" class="form-control" placeholder="password" name="password" id="pass1" required>
+      <div class="alert alert-danger collapse" role="alert" id="noPass1">
+      <span>
+      <p>Please insert your password!</p>
+      </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="pass2">Password Confirmation</label>
+      <input type="password" class="form-control" placeholder="re-type your password" name="confirmation" id="pass2"
+             required>
+      <div class="alert alert-danger collapse" role="alert" id="noPass2">
+      <span>
+      <p>Please confirm your password!</p>
+      </span>
+      </div>
+    </div>
+
+    <div class="alert alert-danger collapse" role="alert" id="alert">
+      <span>
+      <p>Looks like the passwords you entered don't match!</p>
+      </span>
+    </div>
+
+    <div class="alert alert-success collapse" role="alert" id="created">
+      <span>
+      <p>User created!</p>
+      </span>
+    </div>
+
+    <div class="alert alert-danger collapse" role="alert" id="invalidEmail">
+      <span>
+      <p>This email is already in use!</p>
+      </span>
+    </div>
+
+    <br/>
+
+    <!--<button class="btn btn-success" type="submit" id="btn">Create Account</button>-->
+    <input type="button" class="btn btn-success btnSection" id="btn" value="Create Account"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+  </form>
+</div>
