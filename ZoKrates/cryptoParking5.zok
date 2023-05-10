@@ -1,0 +1,16 @@
+// c0-c4 — candidates in the list, one of which is the right hash
+// a, b, c, d — non-trivial random value from which we generated hash
+
+import "hashes/sha256/512bitPacked" as sha256packed
+
+def main(field c0, field c1, field c2, field c3, field c4, field c5, field c6, field c7, field c8, field c9, private field a, private field b, private field c, private field d) -> (field):
+    field[2] h = sha256packed([a, b, c, d])
+
+    field correctHash = 0
+    correctHash = correctHash + if h[0] == c0 && h[1] == c1 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c2 && h[1] == c3 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c4 && h[1] == c5 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c6 && h[1] == c7 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c8 && h[1] == c9 then 1 else 0 fi
+  
+    return correctHash

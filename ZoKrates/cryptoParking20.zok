@@ -1,0 +1,31 @@
+// c0-c4 — candidates in the list, one of which is the right hash
+// a, b, c, d — non-trivial random value from which we generated hash
+
+import "hashes/sha256/512bitPacked" as sha256packed
+
+def main(field c0, field c1, field c2, field c3, field c4, field c5, field c6, field c7, field c8, field c9, field c10, field c11, field c12, field c13, field c14, field c15, field c16, field c17, field c18, field c19, field c20, field c21, field c22, field c23, field c24, field c25, field c26, field c27, field c28, field c29, field c30, field c31, field c32, field c33, field c34, field c35, field c36, field c37, field c38, field c39, private field a, private field b, private field c, private field d) -> (field):
+    field[2] h = sha256packed([a, b, c, d])
+
+    field correctHash = 0
+    correctHash = correctHash + if h[0] == c0 && h[1] == c1 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c2 && h[1] == c3 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c4 && h[1] == c5 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c6 && h[1] == c7 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c8 && h[1] == c9 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c10 && h[1] == c11 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c12 && h[1] == c13 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c14 && h[1] == c15 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c16 && h[1] == c17 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c18 && h[1] == c19 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c20 && h[1] == c21 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c22 && h[1] == c23 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c24 && h[1] == c25 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c26 && h[1] == c27 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c28 && h[1] == c29 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c30 && h[1] == c31 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c32 && h[1] == c33 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c34 && h[1] == c35 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c36 && h[1] == c37 then 1 else 0 fi
+    correctHash = correctHash + if h[0] == c38 && h[1] == c39 then 1 else 0 fi
+
+    return correctHash
